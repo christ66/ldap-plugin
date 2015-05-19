@@ -46,7 +46,7 @@ initialDirContextFactory(DefaultInitialDirContextFactory, instance.getLDAPURL() 
     managerPassword = instance.getManagerPassword();
   }
   extraEnvVars = [
-          (Context.REFERRAL):"follow",
+          (Context.REFERRAL):System.getProperty("hudson.security.LDAPBindSecurityRealm.Referral","follow"),
           "com.sun.jndi.ldap.connect.timeout":"30000", // timeout if no connection after 30 seconds
           "com.sun.jndi.ldap.read.timeout":"60000" // timeout if no response after 60 seconds
   ] + instance.getExtraEnvVars();
